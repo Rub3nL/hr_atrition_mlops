@@ -569,18 +569,16 @@ wheels = [
 ]
 
 [[package]]
-name = "hr-atrition-mlops"
+name = "hr-attrition-mlops"
 version = "0.1.0"
-source = { virtual = "." }
+source = { editable = "." }
 dependencies = [
     { name = "fastapi", extra = ["standard"] },
     { name = "gradio" },
-    { name = "httpx2" },
     { name = "joblib" },
     { name = "numpy" },
     { name = "pandas" },
     { name = "pydantic" },
-    { name = "pytest" },
     { name = "requests" },
     { name = "scikit-learn" },
     { name = "uvicorn" },
@@ -596,12 +594,10 @@ dev = [
 requires-dist = [
     { name = "fastapi", extras = ["standard"], specifier = ">=0.143.1" },
     { name = "gradio", specifier = ">=6.30.0" },
-    { name = "httpx2", specifier = ">=2.16.0" },
     { name = "joblib", specifier = ">=1.6.0" },
     { name = "numpy", specifier = ">=2.5.0" },
     { name = "pandas", specifier = ">=3.0.5" },
     { name = "pydantic", specifier = ">=2.13.0" },
-    { name = "pytest", specifier = ">=9.1.1" },
     { name = "requests", specifier = ">=2.34.0" },
     { name = "scikit-learn", specifier = ">=1.9.1" },
     { name = "uvicorn", specifier = ">=0.54.0" },

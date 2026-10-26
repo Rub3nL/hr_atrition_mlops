@@ -1,18 +1,17 @@
 [project]
-name = "hr-atrition-mlops"
+name = "hr-attrition-mlops"
 version = "0.1.0"
-description = "Add your description here"
+description = "MLOps de punta a punta para predecir la rotación (attrition) de empleados con el dataset IBM HR Analytics"
 readme = "README.md"
 requires-python = ">=3.14"
+authors = [{ name = "Ruben Jhonny Limachi Condori" }]
 dependencies = [
     "fastapi[standard]>=0.143.1",
     "gradio>=6.30.0",
-    "httpx2>=2.16.0",
     "joblib>=1.6.0",
     "numpy>=2.5.0",
     "pandas>=3.0.5",
     "pydantic>=2.13.0",
-    "pytest>=9.1.1",
     "requests>=2.34.0",
     "scikit-learn>=1.9.1",
     "uvicorn>=0.54.0",

@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  probar:
+    name: Datos, entrenamiento, pruebas
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 1. Descargar el código del repositorio
+        uses: actions/checkout@v7
+
+      - name: 2. Instalar uv
+        uses: astral-sh/setup-uv@v7
+        with:
+          version: "0.12.19"
+
+      - name: 3. Instalar Python y las dependencias (exactas de uv.lock)
+        run: uv sync --locked
+
+      - name: 4. Preparar y validar los datos
+        run: uv run preparar-datos
+
+      - name: 5. Entrenar el modelo (con puerta de calidad)
+        run: uv run entrenar
+
+      - name: 6. Ejecutar las pruebas (datos, modelo, API)
+        run: uv run pytest -v
+
+      - name: 7. Guardar el modelo entrenado y su ficha
+        uses: actions/upload-artifact@v7
+        with:
+          name: modelo-hr-attrition
+          path: models/
+          retention-days: 7

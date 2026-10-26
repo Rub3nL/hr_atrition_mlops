@@ -1,0 +1,27 @@
+name: CD
+
+# Se ejecuta solo cuando el CI termina en verde en la rama main
+on:
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
+    branches: [main]
+
+permissions: {}
+
+jobs:
+  desplegar:
+    name: Desplegar en Render
+    if: github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'push'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Desplegar la API
+        env:
+          HOOK: ${{ secrets.RENDER_DEPLOY_API }}
+        run: curl --fail -sS -X POST "$HOOK"
+
+      - name: Desplegar la interfaz (Gradio)
+        env:
+          HOOK: ${{ secrets.RENDER_DEPLOY_UI }}
+        run: curl --fail -sS -X POST "$HOOK"

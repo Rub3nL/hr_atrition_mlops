@@ -1,4 +1,4 @@
-# Python-generated files
+# Python
 __pycache__/
 *.py[oc]
 build/
@@ -6,5 +6,19 @@ dist/
 wheels/
 *.egg-info
 
-# Virtual environments
+# Entornos virtuales
 .venv
+
+# Pruebas / caché
+.pytest_cache/
+.coverage
+
+# Artefactos del modelo (se regeneran con `uv run entrenar`)
+models/*
+!models/.gitkeep
+
+# Secretos
+.env
+
+# Sistema
+.DS_Store
