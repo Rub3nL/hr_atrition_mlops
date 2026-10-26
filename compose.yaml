@@ -1,0 +1,24 @@
+services:
+  api:
+    build: .
+    image: hr-attrition-mlops
+    ports:
+      - "8000:8000"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  gradio:
+    image: hr-attrition-mlops
+    command: ["python", "app/gradio_app.py"]
+    environment:
+      API_URL: http://api:8000
+      GRADIO_SERVER_NAME: 0.0.0.0
+      PORT: "7860"
+    ports:
+      - "7860:7860"
+    depends_on:
+      api:
+        condition: service_healthy
