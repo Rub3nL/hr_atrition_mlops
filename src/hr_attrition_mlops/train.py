@@ -164,7 +164,7 @@ def save_model(model, metrics: dict[str, Any], extra: dict[str, Any]) -> None:
             "Gender se excluye de las variables para reducir sesgo; revisar equidad por grupo periódicamente.",
         ],
     }
-    METRICS_PATH.write_text(json.dumps(model_card, indent=2, ensure_ascii=False))
+    METRICS_PATH.write_text(json.dumps(model_card, indent=2, ensure_ascii=False), encoding="utf-8")
 
 
 def main() -> None:

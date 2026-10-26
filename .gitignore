@@ -13,6 +13,9 @@ wheels/
 .pytest_cache/
 .coverage
 
+# Gradio (crea esta carpeta al ejecutar la interfaz)
+.gradio/
+
 # Artefactos del modelo (se regeneran con `uv run entrenar`)
 models/*
 !models/.gitkeep
